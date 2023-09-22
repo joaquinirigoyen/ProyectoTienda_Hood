@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HOOD tienda online</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+  <body id="prendas">
+    <header>
+      <div class="menu">
+        <img src="img/Logo.jpg" alt="">
+        <nav>
+            <ul>
+              <li><a href="index.html">Menu</a></li>
+              <li><a href="promociones.html">Promociones</a></li>
+              <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+            </ul>
+        </nav>
+      </div>
+      <div class="carrito-icono">
+        <button id="cart-toggle" class="cart-toggle" onclick="toggleCarritoMenu()">
+          <span class="carrito-icono-bg"></span>
+          <img src="img/icon_carrito3.png" alt="" class="carrito-icono-img">
+        </button>      
+    </header>
+   <section class="page-content"> 
+        <div class="card">
+            <h3 class="titulo">Buzo Rustico</h3>
+            <img class="imagen" src="img/buzoR.jpg" alt="">    
+            <h1 class="precio">$9500</h1>
+            <button class="buttonAdd" onclick="addToCart('buzoR', 'Buzo Rustico', 9500, 'img/buzoR.jpg')">Agregar al Carrito</button> 
+        </div>
+        <div class="card">
+          <h3 class="titulo">Rompevientos League</h3>
+          <img class="imagen" src="img/rompevientos2.jpg" alt="">    
+          <h1 class="precio">$22.000</h1>
+            <button class="buttonAdd" onclick="addToCart('rompevientos2', 'Rompevientos', 22000 ,'img/rompevientos2.jpg')">Agregar al Carrito</button> 
+        </div>
+        <div class="card">
+          <h3 class="titulo">Chaqueta Universitaria</h3>
+          <img class="imagen" src="img/universitaria.jpg" alt="">    
+          <h1 class="precio">$23.000</h1>
+            <button class="buttonAdd" onclick="addToCart('universitaria', 'Universitaria', 23000 ,'img/universitaria.jpg')">Agregar al Carrito</button> 
+        </div>
+        <div class="card">
+           <h3 class="titulo">Rompevientos Skate</h3>
+           <img class="imagen" src="img/rompevientos.jpg" alt="">   
+           <h1 class="precio">$17.0000</h1>
+           <button class="buttonAdd" onclick="addToCart('rompevientos', 'Rompevientos', 23000, 'img/rompevientos.jpg')">Agregar al Carrito</button>
+        </div>
+        <div class="card">
+          <h3 class="titulo">Buzo Ying-Yang</h3>
+          <img class="imagen" src="img/buzoY.jpg" alt=""> 
+          <h1 class="precio">$13.000</h1>
+          <button class="buttonAdd" onclick="addToCart('buzoY', 'Buzo Ying-Yang', 13000,'img/buzoY.jpg')">Agregar al Carrito</button> 
+        </div>
+        <div class="card">
+          <h3 class="titulo">Campera Jean</h3>
+          <img class="imagen" src="img/camperaJ.jpg" alt="">   
+          <h1 class="precio">$20.0000</h1>
+          <button class="buttonAdd" onclick="addToCart('camperaJ', 'Campera jean', 20000,'img/camperaJ.jpg')">Agregar al Carrito</button> 
+        </div>
+        <div class="card">
+          <h3 class="titulo">Remera Oversize</h3>
+          <img class="imagen" src="img/remera.jpg" alt="">   
+          <h1 class="precio">$6000</h1>
+          <button class="buttonAdd" onclick="addToCart('remeraR', 'Remera Oversize', 6000,'img/remera.jpg')">Agregar al Carrito</button> 
+        </div>
+      <div class="card">
+        <h3 class="titulo">Buzos Oversize</h3>
+        <img class="imagen"src="img/buzos.jpg" alt="">   
+        <h1 class="precio">$13.000</h1>
+        <button class="buttonAdd" onclick="addToCart('buzosO', 'Buzos Oversize', 13000,'img/buzos.jpg')">Agregar al Carrito</button> 
+      </div>
+   </section>
+<!-- Menú lateral del carrito -->
+<div class="carrito-menu" id="carrito-menu">
+  <h2>
+    <button class="flecha" onclick="toggleCarritoMenu()">
+      <img class="flecha-icono" src="img/icon_flecha.svg" alt="">
+    </button>
+    <span>Carrito de compras</span>
+  </h2>
+  <div id="carrito-productos"></div>
+  <div id="carrito-total"></div> <!-- Nuevo elemento para mostrar el total -->
+  <button class="finalizar-compra">
+    <a href="iniciarSesion.html" style="text-decoration: none;">Finalizar Compra </a>
+  </button>
+</div>
+<footer>
+  <p>&copy; 2023 Hood. Todos los derechos reservados.</p>
+</footer> 
+<script src="js/tienda.js"></script>
+</body>
+</html>

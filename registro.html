@@ -1,0 +1,204 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> HOOD tienda online</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+<body id="iniciarS">
+    <header>
+        <div class="menu">
+          <img src="img/Logo.jpg" alt="">
+          <nav>
+              <ul>
+                <li><a href="index.html">Menu</a></li>
+                <li><a href="prendas.html">Prendas</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+              </ul>
+          </nav>
+        </div>
+        <div class="carrito-icono">
+            <button id="cart-toggle" class="cart-toggle" onclick="toggleCarritoMenu()">
+              <span class="carrito-icono-bg"></span>
+              <img src="img/icon_carrito3.png" alt="" class="carrito-icono-img">
+            </button>   
+    </header>
+    <form id="miFormulario2">
+
+
+        <label for="nombre">Nombre de Usuario:</label>
+        <input type="text" id="nombre" name="nombre" >
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena">
+
+        <label for="contrasena">Repetir Contraseña:</label>
+        <input type="password" id="contrasena2" name="contrasena2">
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" >
+    
+    
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <div class="date-inputs">
+          <input type="text" id="dia" name="dia" placeholder="D&iacute;a" >  
+          <input type="text" id="mes" name="mes" placeholder="Mes" > 
+          <input type="text" id="anio" name="anio" placeholder="A&ntilde;o" >
+        </div>
+    
+        <div id="divUsoOpcional"></div>
+    
+        <input type="submit" value="Enviar" onclick="return validar();">
+        
+      </form>
+      
+
+    <footer>
+      <p>&copy; 2023 Hood. Todos los derechos reservados.</p>
+    </footer> 
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Captura el formulario por su ID
+    var form = document.getElementById('miFormulario2');
+
+    // Agrega un controlador de eventos para el evento 'submit'
+    form.addEventListener('submit', function(event) {
+    // Evita que el formulario se envíe
+    event.preventDefault();
+    });
+});
+function validar() {
+  // Obtener los valores de los campos del formulario
+  var nombre = document.getElementById('nombre');
+  var contrasena = document.getElementById('contrasena');
+  var contrasena2 = document.getElementById('contrasena2');
+  var email = document.getElementById('email');
+  var dia = parseInt(document.getElementById('dia').value);
+  var mes = parseInt(document.getElementById('mes').value);
+  var anio = parseInt(document.getElementById('anio').value);
+  
+  
+  // Crear un array para almacenar los campos con errores
+  var camposConError = [];
+  var camposArreglo = [];
+  
+  // Validar campos obligatorios
+  if (!nombre.value || nombre.value.length < 4) {
+    camposConError.push(nombre);
+  } else {
+    camposArreglo.push(nombre);
+  }
+  if (!contrasena.value || contrasena.value.length < 4) {
+    camposConError.push(contrasena);
+  } else {
+    camposArreglo.push(contrasena);
+  }
+  if (!contrasena2.value || contrasena2.value.length < 4 || contrasena.value != contrasena2.value) {
+    camposConError.push(contrasena2);
+  } else {
+    camposArreglo.push(contrasena2);
+  }
+  if (!dia || !esFechaValida(dia, mes, anio)) {
+    camposConError.push(document.getElementById('dia'));
+  } else {
+    camposArreglo.push(document.getElementById('dia'));
+  }
+  if (!mes || !esFechaValida(dia, mes, anio)) {
+    camposConError.push(document.getElementById('mes'));
+  } else {
+    camposArreglo.push(document.getElementById('mes'));
+  }
+  if (!anio || !esFechaValida(dia, mes, anio)) {
+    camposConError.push(document.getElementById('anio'));
+  } else {
+    camposArreglo.push(document.getElementById('anio'));
+  }
+  if (!email.value || !validarEmail(email.value)) {
+    camposConError.push(email);
+  } else {
+    camposArreglo.push(email);
+  }
+  
+  // Verificar si se encontraron errores
+  if (camposConError.length > 0) {
+    marcarCamposConError(camposConError);
+    limpiarCamposArreglos(camposArreglo);
+    return false;
+  }
+  
+  // Validación exitosa
+  alert('¡Felicitaciones ya te registraste en HOOD!');
+  
+  // Restablecer formulario y eliminar el resaltado de errores
+  resetForm();
+
+  // Redireccionar al index
+  window.location.href = 'index.html';
+
+  return true;
+
+}
+
+// Función para validar la estructura de un email
+function validarEmail(email) {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function esFechaValida(dia, mes, anio) {
+  // Verificar si el año es bisiesto
+  var esBisiesto = (anio % 4 === 0 && anio % 100 !== 0) || anio % 400 === 0;
+  
+  // Verificar la cantidad de días en el mes
+  var diasEnMes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  
+  // Ajustar la cantidad de días en febrero si es un año bisiesto
+  if (esBisiesto) {
+    diasEnMes[1] = 29;
+  }
+  
+  // Verificar si el día está dentro del rango válido para el mes
+  if (dia < 1 || dia > diasEnMes[mes - 1]) {
+    return false;
+  }
+  
+  return true;
+}
+
+// Función para marcar los campos con error
+function marcarCamposConError(campos) {
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = 'red';
+  }
+}
+
+// Función para limpiar el resaltado de campos corregidos
+function limpiarCamposArreglos(campos) {
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = '';
+  }
+}
+ 
+// Función para restablecer el formulario y eliminar el resaltado de errores
+function resetForm() {
+  var form = document.getElementById('miFormulario2');
+  form.reset();
+  
+  var campos = form.elements;
+  
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = '';
+  }
+}
+
+
+
+</script>
+
+
+</html>

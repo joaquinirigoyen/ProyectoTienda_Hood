@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HOOD tienda online</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+
+<body id="promociones">
+    <header>
+      <div class="menu">
+        <img src="img/Logo.jpg" alt="">
+        <nav>
+            <ul>
+              <li><a href="index.html">Menu</a></li>
+              <li><a href="prendas.html">prendas</a></li>
+              <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+            </ul>
+        </nav>
+      </div>
+      <div class="carrito-icono">
+        <button id="cart-toggle" class="cart-toggle" onclick="toggleCarritoMenu()">
+          <span class="carrito-icono-bg"></span>
+          <img src="img/icon_carrito3.png" alt="" class="carrito-icono-img">
+        </button>      
+    </header>
+
+    <div id="cartel-promociones">
+        <h2>No hay promociones disponibles en este momento</h2>
+        <p>¡Estamos trabajando en nuevas ofertas para ti! Mantente al tanto de nuestras redes sociales para enterarte de las próximas promociones.</p>
+        <button onclick="cerrarCartel()">Cerrar</button>
+    </div>
+ 
+<footer>
+  <p>&copy; 2023 Hood. Todos los derechos reservados.</p>
+</footer> 
+</body>
+<script>
+    function cerrarCartel() {
+      var cartel = document.getElementById('cartel-promociones');
+      cartel.style.display = 'none';
+      // Redireccionar al index
+      window.location.href = 'index.html';
+    }
+    
+    </script>
+</html>

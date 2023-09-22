@@ -1,0 +1,151 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> HOOD tienda online</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/scripts.js"> </script>
+    </head>
+    <body id="iniciarS">
+        <header>
+            <div class="menu">
+              <img src="img/Logo.jpg" alt="">
+              <nav>
+                  <ul>
+                    <li><a href="index.html">Menu</a></li>
+                    <li><a href="prendas.html">Prendas</a></li>
+                    <li><a href="#">Promociones</a></li>
+                  </ul>
+              </nav>
+            </div>
+            <div class="carrito-icono">
+                <button id="cart-toggle" class="cart-toggle" onclick="toggleCarritoMenu()">
+                  <span class="carrito-icono-bg"></span>
+                  <img src="img/icon_carrito3.png" alt="" class="carrito-icono-img">
+                </button>   
+        </header>
+        <form id="miFormulario">
+      
+          <label for="nombre">Nombre de Usuario:</label>
+          <input type="text" id="nombre" name="nombre" >
+      
+      
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" name="contrasena">
+      
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" >
+      
+          <div id="divUsoOpcional"></div>
+      
+          <input type="submit" value="Enviar" onclick="return validar();" >
+
+          <a id="registro" href="registro.html" style="color:black;" onmouseover='this.style.color="green";' onmouseout='this.style.color="black";'>No tenes cuenta? Registrate</a>
+          
+        </form>
+   
+    <footer>
+        <p>&copy; 2023 Hood. Todos los derechos reservados.</p>
+    </footer> 
+    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Captura el formulario por su ID
+          var form = document.getElementById('miFormulario');
+      
+          // Agrega un controlador de eventos para el evento 'submit'
+          form.addEventListener('submit', function(event) {
+            // Evita que el formulario se envíe
+            event.preventDefault();
+          });
+        });
+
+function validar() {
+  // Obtener los valores de los campos del formulario
+  var nombre = document.getElementById('nombre');
+  var contrasena = document.getElementById('contrasena');
+  var email = document.getElementById('email');
+  
+  // Crear un array para almacenar los campos con errores
+  var camposConError = [];
+  var camposArreglo = [];
+  
+  // Validar campos obligatorios
+  if (!nombre.value || nombre.value.length < 4) {
+    camposConError.push(nombre);
+  } else {
+    camposArreglo.push(nombre);
+  }
+  if (!contrasena.value || contrasena.value.length < 4) {
+    camposConError.push(contrasena);
+  } else {
+    camposArreglo.push(contrasena);
+  }
+  if (!email.value || !validarEmail(email.value)) {
+    camposConError.push(email);
+  } else {
+    camposArreglo.push(email);
+  }
+
+  // Verificar si se encontraron errores
+  if (camposConError.length > 0) {
+    marcarCamposConError(camposConError);
+    limpiarCamposArreglos(camposArreglo);
+    return false;
+  }
+  
+  // Validación exitosa
+  alert('¡Se Inicio Sesion correctamente!');
+  
+  // Restablecer formulario y eliminar el resaltado de errores
+  resetForm();
+  
+ // Redireccionar al index
+  window.location.href = 'index.html';
+
+  return true;
+
+
+}
+
+// Función para validar la estructura de un email
+function validarEmail(email) {
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+
+// Función para marcar los campos con error
+function marcarCamposConError(campos) {
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = 'red';
+  }
+}
+
+// Función para limpiar el resaltado de campos corregidos
+function limpiarCamposArreglos(campos) {
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = '';
+  }
+}
+ 
+// Función para restablecer el formulario y eliminar el resaltado de errores
+function resetForm() {
+  var form = document.getElementById('miFormulario');
+  form.reset();
+  
+  var campos = form.elements;
+  
+  for (var i = 0; i < campos.length; i++) {
+    var campo = campos[i];
+    campo.style.borderColor = '';
+  }
+}
+
+
+    </script>
+      
+</html>
