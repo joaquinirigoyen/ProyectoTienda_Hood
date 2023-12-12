@@ -1,2 +1,2 @@
-# ProyectoTienda_Hood
-tienda creada para la materia programacion estatica. 
+# Tienda HOOD
+Pagina Web creada para venta de ropa,con carrito de compras incluido(estatico).
