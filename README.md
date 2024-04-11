@@ -1,5 +1,5 @@
 # Tienda HOOD
-Pagina Web creada para venta de ropa,con carrito de compras incluido(estatico).
+Pagina Web estatica sobre venta de ropa.
 
-
-Visita mi página estática haciendo clic [aquí](file:///D:/joacoo/HoodWeb/index.html).
+Visita la tienda de hood haciendo clic [aquí](https://github.com/joaquinirigoyen/ProyectoTienda_Hood/blob/main/index.html).
+  
